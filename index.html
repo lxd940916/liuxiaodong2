@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	p{	width: 180px;
+		height: 20px;
+		float: left;
+		text-align: center;
+	}
+	span{
+		float: left;
+		margin-left: 20px
+	}
+</style>
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<body>
+	 <input type="email" class="form-control" id="inputEmail3" placeholder="sousuo">
+    </div>
+	<input class="btn btn-default" type="button" value="Input">
+	<div class="div1" style="width: 300px;border: 1px solid #000;height: 200px"></div>
+</body>
+<script type="text/javascript">
+	$(function(){
+		$('.btn').click(function(){
+			var a=$('.form-control').val();
+			if(a==''){
+				alert()
+			}else{
+				$.ajax({
+				url:'http://localhost:3000/end',
+				type:'post',
+				data:{id:a},
+				datatype:'json',
+				success:function(e){
+					var con = '';
+					for(var i in e){
+						con+='<p>'+e[i].name+'</p><span>'+e[i].detail+'</span>'
+					}
+					$('.div1').html(con)
+				}
+			})
+			}
+			
+		})
+	})
+</script>
+</html>
